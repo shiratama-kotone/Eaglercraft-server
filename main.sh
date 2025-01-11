@@ -28,11 +28,6 @@ fi
 tmux source-file "$TMUX_CONF"
 echo "setting reload"
 
-# chmodする
-chmod 777 server.sh
-chmod 777 waterfall.sh
-chmod 777 caddy.sh
-
 #ここからせっしょん
 
 # セッションつくる
