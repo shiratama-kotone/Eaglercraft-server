@@ -37,14 +37,11 @@ chmod 777 caddy.sh
 
 # セッションつくる
 if ! tmux has-session -t server 2>/dev/null; then
-  tmux new-session -d -s server -c /workspaces/chanhina \
-    "./server.sh"
+  tmux new-session -d -s server
   
   # 分割
-  tmux split-window -h -t server:0 -c /workspaces/chanhina \
-    "./waterfall.sh"
-  tmux split-window -v -t server:0 -c /workspaces/chanhina \
-    "./caddy.sh"
+  tmux split-window -h -t server:0
+  tmux split-window -v -t server:0
 fi
 
 # アタッチ
