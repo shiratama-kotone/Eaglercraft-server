@@ -8,7 +8,7 @@ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo 
 sudo apt update
 sudo apt install caddy -y
 sudo apt update
-sudp apt install tmux -y
+sudo apt install tmux -y
 
 #ここから設定
 
@@ -28,15 +28,23 @@ fi
 tmux source-file "$TMUX_CONF"
 echo "setting reload"
 
+# chmodする
+chmod 777 server.sh
+chmod 777 waterfall.sh
+chmod 777 caddy.sh
+
 #ここからせっしょん
 
 # セッションつくる
 if ! tmux has-session -t server 2>/dev/null; then
-  tmux new-session -d -s server
+  tmux new-session -d -s server -c /workspaces/chanhina \
+    "./server.sh"
   
   # 分割
-  tmux split-window -h -t server:0
-  tmux split-window -v -t server:0
+  tmux split-window -h -t server:0 -c /workspaces/chanhina \
+    "./waterfall.sh"
+  tmux split-window -v -t server:0 -c /workspaces/chanhina \
+    "./caddy.sh"
 fi
 
 # アタッチ
