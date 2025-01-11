@@ -1,1 +1,2 @@
+cd caddy
 caddy run
