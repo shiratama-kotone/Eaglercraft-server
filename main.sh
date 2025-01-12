@@ -36,7 +36,6 @@ if ! tmux has-session -t server 2>/dev/null; then
   
   # 分割
   tmux split-window -h -t server:0
-  tmux split-window -v -t server:0
 fi
 
 # アタッチ
