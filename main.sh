@@ -7,6 +7,15 @@ sudo apt install tmux -y
 
 #ここから設定
 
+#alias
+
+echo "alias s1='./server.sh'" >> ~/.bashrc
+echo "alias s2='./waterfall.sh'" >> ~/.bashrc
+
+#反映
+
+source ~/.bashrc
+
 # tmux.confのパス
 TMUX_CONF="$HOME/.tmux.conf"
 
